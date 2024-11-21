@@ -1,0 +1,21 @@
+name: Delpoy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - dev  # Set a branch name to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out the repository (cucumber-html-reports)
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # Deploys cucumber-html-reports to GitHub pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish dir: ./cucumber-html-reports
